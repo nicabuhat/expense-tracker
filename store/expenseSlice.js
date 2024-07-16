@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const expenseSlice = createSlice({
-  name: "counter",
+  name: "expense",
   initialState: {
     expenses: [],
     total: 0,
@@ -9,11 +9,13 @@ const expenseSlice = createSlice({
   },
   reducers: {
     addExpense: (state, action) => {
-      state.expenses.push(action);
-      return state;
+      state.expenses.push(action.payload);
     },
     sumTotal: (state) => {
-      state.value -= 1;
+      state.total = state.expenses.reduce(
+        (total, expense) => total + (expense.amount || 0),
+        0
+      );
     },
   },
 });
