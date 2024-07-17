@@ -27,9 +27,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${libreBaskerville.variable} ${leagueSpartan.variable} font-serif bg-gray`}
       >
-        <Nav />
-        {/* Redux Provider */}
-        <Providers>{children}</Providers>
+        <div class="max-w-screen-2xl mx-auto">
+          <Nav />
+          {/* Redux Provider */}
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );
