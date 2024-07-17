@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "./Providers";
 import Nav from "@/components/Nav";
 
+// Google Fonts Import
 const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         className={`${libreBaskerville.variable} ${leagueSpartan.variable} font-serif bg-gray`}
       >
         <Nav />
+        {/* Redux Provider */}
         <Providers>{children}</Providers>
       </body>
     </html>

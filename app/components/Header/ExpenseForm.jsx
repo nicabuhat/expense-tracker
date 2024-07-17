@@ -25,16 +25,16 @@ const ExpenseForm = () => {
     e.preventDefault();
     dispatch(
       addExpense({
-        id: Math.random().toString(36).substr(2, 9),
+        id: Math.random().toString(36).substr(2, 9), //generate random string for ID
         name: expense.name,
         description: expense.description,
         amount: parseFloat(expense.amount),
         date: expense.date,
       })
     );
-    dispatch(sumTotal());
-    dispatch(setApproval());
-    setExpense({ name: "", amount: 0, description: "", data: "" });
+    dispatch(sumTotal()); //update total
+    dispatch(setApproval()); //update approval percentage
+    setExpense({ name: "", amount: 0, description: "", data: "" }); // reset input field
   };
 
   return (

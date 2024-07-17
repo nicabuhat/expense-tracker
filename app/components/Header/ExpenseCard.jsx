@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 
 const ExpenseCard = () => {
+  // load total expense from state
   const expenseState = useSelector((state) => state.expense);
 
   return (

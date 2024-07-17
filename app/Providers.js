@@ -10,14 +10,17 @@ export default function StoreProvider({ children }) {
 
   useEffect(() => {
     if (!storeRef.current) {
+      // retrieve initial state from local storage if already available
       const initialState = localStorage.getItem("reduxState")
         ? JSON.parse(localStorage.getItem("reduxState"))
         : {};
       storeRef.current = makeStore(initialState);
     }
+
     setIsHydrated(true);
   }, []);
 
+  // fix hyradtion issue
   if (!isHydrated) {
     return null;
   }

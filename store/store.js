@@ -2,10 +2,11 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import expenseReducer from "./expenseSlice";
-import { useEffect } from "react";
 
+// save store to local storage after each dispatch
 const localStorageMiddleware = (store) => (next) => (action) => {
   const result = next(action);
+  // check if running in browser
   if (typeof window !== "undefined") {
     localStorage.setItem("reduxState", JSON.stringify(store.getState()));
   }
@@ -18,6 +19,7 @@ const makeStore = (preloadedState = {}) => {
       expense: expenseReducer,
     },
     preloadedState,
+    // concat middleware with localStorageMiddleware
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(localStorageMiddleware),
     devTools: process.env.NODE_ENV !== "production",

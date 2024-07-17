@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ExpenseTable = () => {
+  // load expenses from state
   const expenseState = useSelector((state) => state.expense);
 
   const [search, setSearch] = useState("");
+  // set initial filtered value to original expense state
   const [filteredList, setFilteredList] = useState(expenseState?.expenses);
 
   const handleChange = (e) => {
@@ -14,6 +16,7 @@ const ExpenseTable = () => {
   };
 
   useEffect(() => {
+    // filter via description
     if (search.length)
       setFilteredList(
         expenseState?.expenses.filter((expense) =>

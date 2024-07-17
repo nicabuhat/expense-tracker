@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 
 const ApprovalCard = () => {
+  // load approval rate from state
   const expenseState = useSelector((state) => state.expense);
 
   return (
