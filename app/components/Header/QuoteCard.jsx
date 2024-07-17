@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const QuoteCard = () => {
   return (
-    <div className="col-span-3 h-full bg-orange row-span-2 rounded-3xl p-6 flex flex-col justify-center">
+    <div className="col-span-3 h-full bg-orange row-span-2 rounded-3xl p-6 xl:order-3 flex-col justify-center sm:hidden md:hidden max-lg:hidden xl:flex">
       <div className="flex items-center space-x-4 mb-4">
         <Image
           src="/bubble.svg"

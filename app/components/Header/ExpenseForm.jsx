@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addExpense } from "@/store/expenseSlice";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addExpense, setApproval, sumTotal } from "@/store/expenseSlice";
 
 const ExpenseForm = () => {
   const dispatch = useDispatch();
-  const expenseState = useSelector((state) => state.expense);
+
   const [expense, setExpense] = useState({
     name: "",
     amount: 0,
@@ -32,13 +32,18 @@ const ExpenseForm = () => {
         date: expense.date,
       })
     );
+    dispatch(sumTotal());
+    dispatch(setApproval());
     setExpense({ name: "", amount: 0, description: "", data: "" });
   };
 
   return (
-    <div className="col-span-6 row-span-2 font-sans text-black bg-white rounded-3xl p-6">
+    <div className="sm:col-span-1 md:col-span-2 lg:col-span-9 xl:col-span-6 sm:order-last md:order-last lg:order-2 row-span-2 font-sans text-black bg-white rounded-3xl p-6">
       <h1 className="text-3xl text-center mb-6">Expense Form</h1>
-      <form className="text-lg max-w-md mx-auto" onSubmit={handleSubmit}>
+      <form
+        className="xl:text-lg max-md:text-base max-w-md mx-auto"
+        onSubmit={handleSubmit}
+      >
         <div className="mb-4">
           <label className="block" htmlFor="name">
             Name
@@ -89,10 +94,7 @@ const ExpenseForm = () => {
           ></textarea>
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="date"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label htmlFor="date" className="block text-gray-700 mb-2">
             Date
           </label>
           <input

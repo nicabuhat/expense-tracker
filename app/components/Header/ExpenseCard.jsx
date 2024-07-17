@@ -1,19 +1,23 @@
+"use client";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 
 const ExpenseCard = () => {
+  const expenseState = useSelector((state) => state.expense);
+
   return (
-    <div className="bg-purple text-white rounded-3xl p-4 font-sans relative min-h-[200px] flex flex-col justify-between w-full col-span-3">
+    <div className="bg-purple text-white rounded-3xl p-4 font-sans relative min-h-[200px] flex flex-col justify-between w-full sm:col-span-1 md:col-span-1 lg:col-span-3 lg:order-1">
       <div className="bg-green text-black rounded-full w-fit px-2 py-1">
         Total Expenses
       </div>
       <Image
         src="/expense.svg"
         alt="Expense Illustrations"
-        width="100"
-        height="100"
-        className="absolute bottom-0 right-0 h-full w-auto"
+        width="90"
+        height="90"
+        className="absolute bottom-0 right-0 h-5/6 w-auto"
       />
-      <h1 className="text-5xl">$100,000</h1>
+      <h1 className="xl:text-7xl max-lg:text-6xl">${expenseState.total}</h1>
     </div>
   );
 };
